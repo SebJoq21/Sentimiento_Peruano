@@ -1,16 +1,75 @@
-# React + Vite
+# Sentimiento Peruano — Landing Page y Carta Digital
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Esqueleto de sitio web (Website as a Service) para el restaurante de comida criolla peruana **Sentimiento Peruano**. Construido con **React + Vite**, **Tailwind CSS** y **React Router**.
 
-Currently, two official plugins are available:
+## Requisitos previos
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **Node.js** v18 o superior (recomendado v22+)
+- **npm** v9 o superior
 
-## React Compiler
+## Instalación
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+```bash
+npm install
+```
 
-## Expanding the Oxlint configuration
+Instala todas las dependencias del proyecto:
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+| Dependencia       | Uso                                            |
+| ----------------- | ---------------------------------------------- |
+| `react`           | Librería principal de interfaz                 |
+| `react-dom`       | Renderizado de React en el DOM                 |
+| `react-router-dom`| Rutas: `/` (landing) y `/carta` (carta digital)|
+| `lucide-react`    | Íconos de la interfaz                          |
+| `tailwindcss`     | Framework de estilos CSS                       |
+
+## Levantar el proyecto
+
+Ejecuta el servidor de desarrollo con HMR (Hot Module Replacement):
+
+```bash
+npm run dev
+```
+
+Luego abre la URL que muestra la consola (por defecto http://localhost:5173).
+
+Rutas disponibles:
+
+- `/` → Landing Page (hero, nosotros, teaser de la carta, reserva, footer)
+- `/carta` → Carta digital con imágenes, categorías y botón flotante de reserva
+
+## Scripts útiles
+
+| Comando            | Descripción                                       |
+| ------------------ | ------------------------------------------------- |
+| `npm run dev`      | Servidor de desarrollo con HMR                    |
+| `npm run build`    | Genera la build de producción en `dist/`          |
+| `npm run preview`  | Sirve localmente la build de producción           |
+| `npm run lint`     | Analiza el código con Oxlint                      |
+
+## Estructura del proyecto
+
+```
+src/
+├── data/config.js                 → Toda la información del restaurante (datos editables)
+├── context/ReservationContext.jsx → Estado del flujo de reserva (pendiente de conectar al backend)
+├── pages/
+│   ├── LandingPage.jsx            → Vista principal
+│   └── MenuPage.jsx               → Carta digital
+├── components/
+│   ├── menu/                      → DishCard, MenuCategory
+│   └── Navbar, Hero, About, MenuTeaser, ReservationCTA, Footer, ...
+└── main.jsx / App.jsx             → Punto de entrada y rutas
+```
+
+## Personalización rápida
+
+Todo el contenido del sitio (nombre, teléfono, dirección, platos, precios, imágenes, enlaces) se edita en **`src/data/config.js`**, sin tocar los componentes.
+
+## Paleta de colores
+
+Definida en `tailwind.config.js`:
+
+- `brand` → rojo/terracota (ají panca)
+- `cream` / `terra` → tonos tierra y crema para fondos
+- `ink` → grises oscuros para el texto
